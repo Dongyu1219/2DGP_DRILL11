@@ -1,7 +1,7 @@
 # 이것은 각 상태들을 객체로 구현한 것임.
 
 from pico2d import get_time, load_image, SDL_KEYDOWN, SDL_KEYUP, SDLK_SPACE, SDLK_LEFT, SDLK_RIGHT, load_font, \
-    draw_rectangle
+    draw_rectangle, close_canvas
 
 from ball import Ball
 import game_world
@@ -154,6 +154,7 @@ class Boy:
             self.ball_count -= 1
             ball = Ball(self.x, self.y, self.face_dir*10)
             game_world.add_object(ball)
+            game_world.add_collision_pair('zombie:ball', None, ball)
 
     def get_bb(self):
         # fill here
@@ -168,4 +169,6 @@ class Boy:
             #여기서도 없앨 수 있음
             #그러나 교수님은 스스로 없애는 것을 추천
             #game_world.remove_object(other)
+        if group == 'boy:zombie':
+            game_framework.quit()
         pass

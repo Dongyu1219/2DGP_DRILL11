@@ -30,4 +30,7 @@ class Ball:
         if group == 'boy:ball':
             game_world.remove_object(self)
             #remove_object() 수정 필요
+
+        if group == 'zombie:ball':
+            game_world.remove_object(self)
         pass
